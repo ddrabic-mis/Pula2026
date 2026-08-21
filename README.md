@@ -1,0 +1,1 @@
+Projekt vezan uz edukaciju razvoja web aplikacija
