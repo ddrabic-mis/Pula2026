@@ -1,12 +1,10 @@
-# prva FastApi aplikacija
-from fastapi import FastAPI
+import math
 
-app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+A=3.5
+B=4.5
+print("zaokruženo A:", round(A+0.0001))
+print("zaokruženo B:", round(B+0.0001))
+print("Zaokruženo na najbliži niži cijeli broj A:", math.floor(A))
+print("Zaokruženo na najbliži niži cijeli broj B:", math.floor(B))
+print("Zaokruženo na najbliži viši cijeli broj A:", math.ceil(A))
+print("Zaokruženo na najbliži viši cijeli broj B:", math.ceil(B))
