@@ -1,10 +1,20 @@
-import math
+# importiranje biblioteka Pythona
+# fastapi - web framework za izgradnju API-ja
+# uvicorn - ASGI server za pokretanje FastAPI aplikacija
+import fastapi, uvicorn
 
-A=3.5
-B=4.5
-print("zaokruženo A:", round(A+0.0001))
-print("zaokruženo B:", round(B+0.0001))
-print("Zaokruženo na najbliži niži cijeli broj A:", math.floor(A))
-print("Zaokruženo na najbliži niži cijeli broj B:", math.floor(B))
-print("Zaokruženo na najbliži viši cijeli broj A:", math.ceil(A))
-print("Zaokruženo na najbliži viši cijeli broj B:", math.ceil(B))
+app = fastapi.FastAPI()
+
+# dekorator koji definira rutu za HTTP GET zahtjev na korijenskoj putanji ("/")
+@app.get("/")
+# on kaže da će funkcija koja slijedi biti izvršena kada se primi GET zahtjev na korijenskoj putanji
+def korijen():
+    return "Dobrodošli na korijensku putanju!"
+
+# pokretanje FastAPI aplikacije pomoću uvicorn servera
+# __name__ == "__main__" provjerava je li skripta pokrenuta izravno (a ne uvezena kao modul)
+# __name__ je posebna varijabla u Pythonu koja sadrži ime trenutnog modula. 
+# Kada se skripta pokrene izravno, __name__ će biti "__main__".
+if __name__ == "__main__":
+    # pokretanje uvicorn servera s aplikacijom, hostom i portom
+    uvicorn.run(app, host="127.0.0.1", port=8000)
