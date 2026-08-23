@@ -17,4 +17,4 @@ def korijen():
 # Kada se skripta pokrene izravno, __name__ će biti "__main__".
 if __name__ == "__main__":
     # pokretanje uvicorn servera s aplikacijom, hostom i portom
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
