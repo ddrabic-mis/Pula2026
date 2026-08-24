@@ -9,6 +9,8 @@ def unos_imena():
       odgovor = requests.get(f"http://10.112.0.20:8000/ime/{ime}")
       # ispis odgovora s FastAPI aplikacije
       print(odgovor.text)
+      print(f"{odgovor.status_code} - {odgovor.reason}")
+      print(f"{odgovor.url=}")
 
 def dohvati_imena():
     # slanje GET zahtjeva na FastAPI aplikaciju za dohvat svih imena
@@ -28,5 +30,8 @@ def izbornik():
             unos_imena()
         elif izbor == "2":
             dohvati_imena()
+        else:
+            print("Izlaz iz programa.")
+            break
 
 izbornik()
