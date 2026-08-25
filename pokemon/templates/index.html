@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon kamp-arena</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+    <script src="{{ url_for('static', path='/app.js') }}" defer></script>
+</head>
+<body>
+    <header class="hero">
+        <div>
+            <p class="eyebrow">FASTAPI • JSON • REST</p>
+            <h1>Pokémon kamp-arena</h1>
+            <p>Odaberi borca, smisli strategiju i pobijedi računalnog protivnika.</p>
+        </div>
+        <button id="otvori-ljestvicu" class="secondary">Ljestvica trenera</button>
+    </header>
+
+    <main>
+        <!-- Prvi ekran: upis trenera i izbor jednog Pokémona. -->
+        <section id="odabir" class="panel">
+            <div class="section-heading">
+                <div>
+                    <span class="step">1</span>
+                    <h2>Odaberi svog Pokémona</h2>
+                </div>
+                <label>
+                    Ime trenera
+                    <input id="trener" maxlength="30" placeholder="npr. Ana" autocomplete="off">
+                </label>
+            </div>
+
+            <div class="pokemon-grid">
+                {% for pokemon in pokemoni %}
+                <button class="pokemon-choice" data-pokemon="{{ pokemon.ime }}">
+                    <img
+                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ pokemon.id }}.png"
+                        alt="{{ pokemon.ime }}"
+                    >
+                    <span>{{ pokemon.ime | title }}</span>
+                </button>
+                {% endfor %}
+            </div>
+
+            <button id="pokreni-igru" class="primary" disabled>Pokreni borbu</button>
+            <p id="odabir-poruka" class="message" aria-live="polite"></p>
+        </section>
+
+        <!-- Drugi ekran: kartice boraca, četiri poteza i dnevnik borbe. -->
+        <section id="arena" class="panel hidden">
+            <div class="arena-title">
+                <div>
+                    <span class="step">2</span>
+                    <h2>Bitka je počela</h2>
+                </div>
+                <span id="runda" class="round-badge">Runda 0</span>
+            </div>
+
+            <div class="fighters">
+                <article class="fighter player">
+                    <p class="side-label">Tvoj Pokémon</p>
+                    <img id="igrac-slika" alt="Pokémon igrača">
+                    <h3 id="igrac-ime"></h3>
+                    <div id="igrac-tipovi" class="types"></div>
+                    <div class="hp-row">
+                        <span>HP</span>
+                        <strong id="igrac-hp-tekst"></strong>
+                    </div>
+                    <div class="hp-track">
+                        <div id="igrac-hp" class="hp-fill"></div>
+                    </div>
+                </article>
+
+                <div class="versus">VS</div>
+
+                <article class="fighter computer">
+                    <p class="side-label">Računalo</p>
+                    <img id="racunalo-slika" alt="Pokémon računala">
+                    <h3 id="racunalo-ime"></h3>
+                    <div id="racunalo-tipovi" class="types"></div>
+                    <div class="hp-row">
+                        <span>HP</span>
+                        <strong id="racunalo-hp-tekst"></strong>
+                    </div>
+                    <div class="hp-track">
+                        <div id="racunalo-hp" class="hp-fill enemy"></div>
+                    </div>
+                </article>
+            </div>
+
+            <div id="potezi" class="moves">
+                <button data-potez="brzi_napad">
+                    <strong>Brzi napad</strong>
+                    <span>95% precizan</span>
+                </button>
+                <button data-potez="snazni_napad">
+                    <strong>Snažni napad</strong>
+                    <span>Jači, ali 70% precizan</span>
+                </button>
+                <button data-potez="obrana">
+                    <strong>Obrana</strong>
+                    <span>Prepolavlja sljedeću štetu</span>
+                </button>
+                <button data-potez="oporavak">
+                    <strong>Oporavak</strong>
+                    <span id="oporavak-tekst">Vraća 25% HP-a</span>
+                </button>
+            </div>
+
+            <div id="zavrsni-ekran" class="result hidden">
+                <h2 id="zavrsna-poruka"></h2>
+                <button id="nova-igra" class="primary">Nova igra</button>
+            </div>
+
+            <div class="battle-log">
+                <h3>Tijek borbe</h3>
+                <div id="povijest" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Modalni prozor s ljestvicom izračunatom iz rezultati.json. -->
+        <dialog id="ljestvica-dialog">
+            <div class="dialog-heading">
+                <h2>Ljestvica trenera</h2>
+                <button id="zatvori-ljestvicu" class="icon-button" aria-label="Zatvori">×</button>
+            </div>
+            <div id="ljestvica-sadrzaj"></div>
+            <button id="obrisi-rezultate" class="danger">Obriši rezultate</button>
+        </dialog>
+    </main>
+
+    <footer>
+        Edukacijski projekt • podaci i slike: PokeAPI
+    </footer>
+</body>
+</html>
