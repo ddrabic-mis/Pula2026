@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vježba 5</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <style>
+    .stil1 {
+      color: {{boja}}; 
+      font-weight: bold; 
+      font-size: {{velicina}}px;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,13 +20,7 @@
   <hr>
   <p>Ja sam se zovem <b>{{ ime }}</b></p>
   <p>Mjesto mog rođenja je 
-    <span style=
-      "
-      color: {{boja}}; 
-      font-weight: bold; 
-      font-size: {{velicina}}px;
-      "
-    >
+    <span class="stil1">
       {{ mjesto }}
     </span>
   </p>
