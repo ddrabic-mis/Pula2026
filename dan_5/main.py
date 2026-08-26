@@ -26,3 +26,12 @@ def pocetna(request: Request):
             'velicina': fsize
             },
         )
+
+@app.get("/about", response_class=HTMLResponse)
+def o_nama(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="about.html",
+        context={
+            },
+        )
