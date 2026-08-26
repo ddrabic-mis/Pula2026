@@ -1,1 +1,222 @@
-[]
+[
+    {
+        "id_igre": "34328f17",
+        "vrijeme": "2026-08-25T21:22:45",
+        "trener": "pero",
+        "pokemon_igraca": "bulbasaur",
+        "pokemon_racunala": "pikachu",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "pikachu",
+        "broj_rundi": 12
+    },
+    {
+        "id_igre": "ba11a5ea",
+        "vrijeme": "2026-08-26T12:41:26",
+        "trener": "Adam",
+        "pokemon_igraca": "charmander",
+        "pokemon_racunala": "bulbasaur",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "bulbasaur",
+        "broj_rundi": 8
+    },
+    {
+        "id_igre": "865a36d6",
+        "vrijeme": "2026-08-26T12:41:29",
+        "trener": "Ante",
+        "pokemon_igraca": "snorlax",
+        "pokemon_racunala": "geodude",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "snorlax",
+        "broj_rundi": 14
+    },
+    {
+        "id_igre": "17ecf798",
+        "vrijeme": "2026-08-26T12:41:29",
+        "trener": "dejan",
+        "pokemon_igraca": "snorlax",
+        "pokemon_racunala": "meowth",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "snorlax",
+        "broj_rundi": 5
+    },
+    {
+        "id_igre": "693ad882",
+        "vrijeme": "2026-08-26T12:41:30",
+        "trener": "Filip",
+        "pokemon_igraca": "gastly",
+        "pokemon_racunala": "squirtle",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "squirtle",
+        "broj_rundi": 10
+    },
+    {
+        "id_igre": "cdb2b13a",
+        "vrijeme": "2026-08-26T12:42:05",
+        "trener": "67",
+        "pokemon_igraca": "squirtle",
+        "pokemon_racunala": "meowth",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "squirtle",
+        "broj_rundi": 11
+    },
+    {
+        "id_igre": "3825741b",
+        "vrijeme": "2026-08-26T12:42:15",
+        "trener": "Lovro",
+        "pokemon_igraca": "charmander",
+        "pokemon_racunala": "pikachu",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "pikachu",
+        "broj_rundi": 7
+    },
+    {
+        "id_igre": "6ef0b461",
+        "vrijeme": "2026-08-26T12:42:16",
+        "trener": "67",
+        "pokemon_igraca": "geodude",
+        "pokemon_racunala": "meowth",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "geodude",
+        "broj_rundi": 6
+    },
+    {
+        "id_igre": "4b37dab5",
+        "vrijeme": "2026-08-26T12:42:24",
+        "trener": "ante",
+        "pokemon_igraca": "psyduck",
+        "pokemon_racunala": "snorlax",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "snorlax",
+        "broj_rundi": 9
+    },
+    {
+        "id_igre": "030e6097",
+        "vrijeme": "2026-08-26T12:42:29",
+        "trener": "67",
+        "pokemon_igraca": "snorlax",
+        "pokemon_racunala": "squirtle",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "snorlax",
+        "broj_rundi": 11
+    },
+    {
+        "id_igre": "521b1ba3",
+        "vrijeme": "2026-08-26T12:42:41",
+        "trener": "67",
+        "pokemon_igraca": "gastly",
+        "pokemon_racunala": "geodude",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "geodude",
+        "broj_rundi": 3
+    },
+    {
+        "id_igre": "535f9c7e",
+        "vrijeme": "2026-08-26T12:42:56",
+        "trener": "67",
+        "pokemon_igraca": "gastly",
+        "pokemon_racunala": "pikachu",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "pikachu",
+        "broj_rundi": 5
+    },
+    {
+        "id_igre": "eaf812a0",
+        "vrijeme": "2026-08-26T12:43:00",
+        "trener": "ante",
+        "pokemon_igraca": "eevee",
+        "pokemon_racunala": "bulbasaur",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "eevee",
+        "broj_rundi": 18
+    },
+    {
+        "id_igre": "63a9ef84",
+        "vrijeme": "2026-08-26T12:43:05",
+        "trener": "67",
+        "pokemon_igraca": "pikachu",
+        "pokemon_racunala": "psyduck",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "psyduck",
+        "broj_rundi": 6
+    },
+    {
+        "id_igre": "f4c90cb0",
+        "vrijeme": "2026-08-26T12:43:16",
+        "trener": "Lovro",
+        "pokemon_igraca": "pikachu",
+        "pokemon_racunala": "psyduck",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "pikachu",
+        "broj_rundi": 10
+    },
+    {
+        "id_igre": "94b87c67",
+        "vrijeme": "2026-08-26T12:43:25",
+        "trener": "7",
+        "pokemon_igraca": "pikachu",
+        "pokemon_racunala": "squirtle",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "squirtle",
+        "broj_rundi": 13
+    },
+    {
+        "id_igre": "0f8cbce4",
+        "vrijeme": "2026-08-26T12:43:29",
+        "trener": "dex",
+        "pokemon_igraca": "gastly",
+        "pokemon_racunala": "meowth",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "meowth",
+        "broj_rundi": 11
+    },
+    {
+        "id_igre": "b97404e7",
+        "vrijeme": "2026-08-26T12:43:40",
+        "trener": "netko",
+        "pokemon_igraca": "snorlax",
+        "pokemon_racunala": "squirtle",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "snorlax",
+        "broj_rundi": 6
+    },
+    {
+        "id_igre": "8eb80006",
+        "vrijeme": "2026-08-26T12:43:42",
+        "trener": "6",
+        "pokemon_igraca": "pikachu",
+        "pokemon_racunala": "psyduck",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "psyduck",
+        "broj_rundi": 7
+    },
+    {
+        "id_igre": "c26f3751",
+        "vrijeme": "2026-08-26T12:43:49",
+        "trener": "filip",
+        "pokemon_igraca": "gastly",
+        "pokemon_racunala": "charmander",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "charmander",
+        "broj_rundi": 8
+    },
+    {
+        "id_igre": "899a25b2",
+        "vrijeme": "2026-08-26T12:44:04",
+        "trener": "06otkog",
+        "pokemon_igraca": "eevee",
+        "pokemon_racunala": "squirtle",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "eevee",
+        "broj_rundi": 20
+    },
+    {
+        "id_igre": "e787dc53",
+        "vrijeme": "2026-08-26T12:44:20",
+        "trener": "netko",
+        "pokemon_igraca": "bulbasaur",
+        "pokemon_racunala": "squirtle",
+        "pobjednik": "igrac",
+        "pobjednicki_pokemon": "bulbasaur",
+        "broj_rundi": 17
+    }
+]
