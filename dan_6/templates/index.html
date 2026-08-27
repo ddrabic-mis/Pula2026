@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTakToe</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+</head>
+<body>
+  <div class="w3-container w3-blue">
+  <h2>Tik Tak Toe</h2>
+  <p>Igra "križić - kružić"</p>
+  {% if aktivna %}
+    <p> igra je aktivna</p>
+    <div class="w3-panel w3-black w3-card-4">
+      {% if krizic %}
+        <p> na potezu je križić</p>
+      {% else %}
+        <p> na potezu je kružić</p>
+      {% endif %}
+    </div>
+  {% else %}
+    <p> igra je završena</p>
+  {% endif %}
+  </div>
+
+<div class="w3-container w3-blue w3-">
+  {% for i in range(3) %}
+    <div class="w3-row w3-border w3-border-black w3-white w3-center">
+      {% for j in range(3) %}
+        <div class="w3-col w3-border w3-border-black" style="width:33.33%">
+          <button 
+            class="w3-button w3-white w3-border w3-border-red w3-round-large w3-padding-32"
+            {% if not aktivna or polje[i][j] == 0 %}
+              disabled
+            {% else %}
+              onclick="window.location.href='/potez/{{i}}/{{j}}/{{krizic}}'"
+            {% endif %}
+          >
+          <!-- vrijednot koju u gumbu prikazujemo-->
+            {% if polje[i][j] == 1 %}
+              X
+            {% elif polje[i][j] == 2 %}
+              O
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>  
+
+</body>
+</html>

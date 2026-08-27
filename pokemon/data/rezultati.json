@@ -218,5 +218,15 @@
         "pobjednik": "igrac",
         "pobjednicki_pokemon": "bulbasaur",
         "broj_rundi": 17
+    },
+    {
+        "id_igre": "e992e30b",
+        "vrijeme": "2026-08-27T10:38:32",
+        "trener": "pero",
+        "pokemon_igraca": "squirtle",
+        "pokemon_racunala": "machop",
+        "pobjednik": "racunalo",
+        "pobjednicki_pokemon": "machop",
+        "broj_rundi": 12
     }
 ]
