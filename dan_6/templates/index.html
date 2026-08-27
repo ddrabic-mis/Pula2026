@@ -3,54 +3,282 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTakToe</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <meta name="theme-color" content="#111827">
+  <title>Križić-kružić</title>
+  <style>
+    :root {
+      --background: #08111f;
+      --surface: rgba(17, 24, 39, 0.88);
+      --surface-light: rgba(255, 255, 255, 0.075);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --x: #38bdf8;
+      --o: #f472b6;
+      --accent: #8b5cf6;
+      --border: rgba(255, 255, 255, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: Inter, ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.18), transparent 28rem),
+        radial-gradient(circle at 85% 85%, rgba(244, 114, 182, 0.16), transparent 28rem),
+        var(--background);
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      z-index: -1;
+      color: rgba(255, 255, 255, 0.025);
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    body::before {
+      content: "×";
+      top: -7rem;
+      left: -3rem;
+      font-size: 28rem;
+      transform: rotate(-12deg);
+    }
+
+    body::after {
+      content: "○";
+      right: -6rem;
+      bottom: -9rem;
+      font-size: 30rem;
+    }
+
+    .game {
+      width: min(100%, 560px);
+      padding: clamp(24px, 6vw, 44px);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      background: var(--surface);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(18px);
+    }
+
+    .game__header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.25rem, 9vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .title-x { color: var(--x); }
+    .title-o { color: var(--o); }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      margin-bottom: 18px;
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      color: #dbeafe;
+      background: var(--surface-light);
+      font-weight: 650;
+    }
+
+    .status__dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.12);
+    }
+
+    .status--finished .status__dot {
+      background: var(--muted);
+      box-shadow: 0 0 0 5px rgba(148, 163, 184, 0.12);
+    }
+
+    .player-mark {
+      color: var(--x);
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .player-mark--o { color: var(--o); }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(8px, 2.5vw, 12px);
+      padding: clamp(10px, 3vw, 14px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(2, 6, 23, 0.58);
+      box-shadow: inset 0 1px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    .cell {
+      aspect-ratio: 1;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: clamp(14px, 4vw, 20px);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      font: inherit;
+      font-size: clamp(2.8rem, 15vw, 5.25rem);
+      font-weight: 850;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .cell:not(:disabled):hover {
+      z-index: 1;
+      border-color: rgba(139, 92, 246, 0.7);
+      background: rgba(139, 92, 246, 0.14);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      transform: translateY(-3px) scale(1.025);
+    }
+
+    .cell:not(:disabled):focus-visible,
+    .new-game:focus-visible {
+      outline: 3px solid #f8fafc;
+      outline-offset: 3px;
+    }
+
+    .cell:disabled {
+      cursor: default;
+      opacity: 1;
+    }
+
+    .cell--x {
+      color: var(--x);
+      background: rgba(56, 189, 248, 0.09);
+      text-shadow: 0 0 28px rgba(56, 189, 248, 0.22);
+    }
+
+    .cell--o {
+      color: var(--o);
+      background: rgba(244, 114, 182, 0.09);
+      text-shadow: 0 0 28px rgba(244, 114, 182, 0.22);
+    }
+
+    .game__footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .new-game {
+      min-width: 170px;
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 22px;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.28);
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .new-game:hover {
+      box-shadow: 0 14px 32px rgba(99, 102, 241, 0.38);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 420px) {
+      body { padding: 16px; }
+      .game { border-radius: 24px; }
+      .subtitle { font-size: 0.92rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="w3-container w3-blue">
-  <h2>Tik Tak Toe</h2>
-  <p>Igra "križić - kružić"</p>
-  {% if aktivna %}
-    <p> igra je aktivna</p>
-    <div class="w3-panel w3-black w3-card-4">
-      {% if krizic %}
-        <p> na potezu je križić</p>
-      {% else %}
-        <p> na potezu je kružić</p>
-      {% endif %}
-    </div>
-  {% else %}
-    <p> igra je završena</p>
-  {% endif %}
-  </div>
+  <main class="game">
+    <header class="game__header">
+      <p class="eyebrow">Klasična igra za dvoje</p>
+      <h1><span class="title-x">Križić</span> <span aria-hidden="true">&amp;</span> <span class="title-o">kružić</span></h1>
+      <p class="subtitle">Prvi igrač koji spoji tri znaka pobjeđuje.</p>
+    </header>
 
-<div class="w3-container w3-blue w3-">
-  {% for i in range(3) %}
-    <div class="w3-row w3-border w3-border-black w3-white w3-center">
-      {% for j in range(3) %}
-        <div class="w3-col w3-border w3-border-black" style="width:33.33%">
-          <button 
-            class="w3-button w3-white w3-border w3-border-red w3-round-large w3-padding-32"
-            {% if not aktivna or polje[i][j] == 0 %}
+    {% if aktivna %}
+      <div class="status" role="status" aria-live="polite">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span>Na potezu je</span>
+        {% if krizic %}
+          <span class="player-mark" aria-label="križić">X</span>
+        {% else %}
+          <span class="player-mark player-mark--o" aria-label="kružić">O</span>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="status status--finished" role="status" aria-live="polite">
+        <span class="status__dot" aria-hidden="true"></span>
+        <span>Igra je završena</span>
+      </div>
+    {% endif %}
+
+    <div class="board" role="grid" aria-label="Ploča za križić-kružić">
+      {% for i in range(3) %}
+        {% for j in range(3) %}
+          <button
+            class="cell{% if polje[i][j] == 1 %} cell--x{% elif polje[i][j] == 2 %} cell--o{% endif %}"
+            type="button"
+            role="gridcell"
+            aria-label="Redak {{ i + 1 }}, stupac {{ j + 1 }}{% if polje[i][j] == 1 %}, križić{% elif polje[i][j] == 2 %}, kružić{% else %}, prazno polje{% endif %}"
+            {% if not aktivna %}
               disabled
             {% else %}
-              onclick="window.location.href='/potez/{{i}}/{{j}}/{{krizic}}'"
+              onclick="window.location.href='/potez/{{ i }}/{{ j }}/{{ krizic }}'"
             {% endif %}
-          >
-          <!-- vrijednot koju u gumbu prikazujemo-->
-            {% if polje[i][j] == 1 %}
-              X
-            {% elif polje[i][j] == 2 %}
-              O
-            {% else %}
-              &nbsp;
-            {% endif %}
-          </button>
-        </div>
+          >{% if polje[i][j] == 1 %}X{% elif polje[i][j] == 2 %}O{% else %}<span aria-hidden="true">&nbsp;</span>{% endif %}</button>
+        {% endfor %}
       {% endfor %}
     </div>
-  {% endfor %}
-</div>  
 
+    <footer class="game__footer">
+      <form action="/nova_igra" method="post">
+        <button class="new-game" type="submit">Nova igra</button>
+      </form>
+    </footer>
+  </main>
 </body>
 </html>
