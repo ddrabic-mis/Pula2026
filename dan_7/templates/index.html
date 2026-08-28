@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pula CHAT</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <script>
+    function posalji() {
+      ime=document.getElementById('nadimak').value;
+      if (ime==""){
+        el=document.getElementById('info_nadimak');
+        el.style.display='';
+        return;
+      }
+      poruka=document.getElementById('poruka').value;
+      if (poruka!="")
+        location.href=`/posalji/${ime}/${poruka}`;
+    }
+  </script>
+</head>
+<body>
+  <!-- Naslov -->
+  <div class="w3-container w3-teal w3-flex">
+    <h1 class="w3-left-align">CHAT aplikacija</h1>
+    <form class="w3-container w3-right-align">
+      <label id="label_nadimak">
+        Nadimak
+        <span 
+          id="info_nadimak" class="w3-text-red" style="display:none"
+        >*</span>
+        </label>
+      <input class="w3-input" type="text" id="nadimak">
+    </form>
+  </div>
+  <!-- pisanje poruke -->
+  <div class="w3-containter w3-white">
+      <form class="w3-container w3-left-align">
+        <label>Poruka:</label>
+        <input class="w3-input" type="text" id="poruka">
+        <button 
+          class="w3-button w3-ripple w3-red"
+          onclick="posalji();"
+        >
+          Pošalji
+        </button>
+    </form>
+  </div>
+  <!-- prikaz poruka -->
+  <div class="w3-containter w3-white">
+    <div class="w3-panel w3-blue">
+      <p>Komunikacija</p>
+    </div>
+    <!-- poruke -->
+    <div >
+      <label class="w3-container">Poruke:</label>
+
+      <ul class="w3-ul">
+        <li class="w3-padding-small">Jill: kjokkl</li>
+        <li class="w3-padding-small">Eve: lkkjhj</li>
+        <li class="w3-padding-small">Adam: ijgkj</li>
+      </ul>
+
+    </div>
+  </div>
+
+</body>
+</html>
