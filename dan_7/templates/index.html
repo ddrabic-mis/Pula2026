@@ -5,19 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pula CHAT</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-  <script>
-    function posalji() {
-      ime=document.getElementById('nadimak').value;
-      if (ime==""){
-        el=document.getElementById('info_nadimak');
-        el.style.display='';
-        return;
-      }
-      poruka=document.getElementById('poruka').value;
-      if (poruka!="")
-        location.href=`/posalji/${ime}/${poruka}`;
-    }
-  </script>
+  <script src="{{ url_for('static', path='/js/skripta.js') }}"></script>
 </head>
 <body>
   <!-- Naslov -->
@@ -30,7 +18,7 @@
           id="info_nadimak" class="w3-text-red" style="display:none"
         >*</span>
         </label>
-      <input class="w3-input" type="text" id="nadimak">
+      <input class="w3-input" type="text" id="nadimak" value='{{ nadimak }}'>
     </form>
   </div>
   <!-- pisanje poruke -->
@@ -56,9 +44,13 @@
       <label class="w3-container">Poruke:</label>
 
       <ul class="w3-ul">
-        <li class="w3-padding-small">Jill: kjokkl</li>
-        <li class="w3-padding-small">Eve: lkkjhj</li>
-        <li class="w3-padding-small">Adam: ijgkj</li>
+        <li class="w3-padding-small">
+          {% for poruka in poruke%}
+            <span class="w3-small w3-text-silver">{{ poruka[0] }}</span>
+            <span class="w3-small w3-text-green"> ({{ poruka[1] }})</span>
+            <span>{{ poruka[2] }}</span>
+          {% endfor %}
+        </li>
       </ul>
 
     </div>
