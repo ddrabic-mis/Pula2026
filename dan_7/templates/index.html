@@ -44,13 +44,13 @@
       <label class="w3-container">Poruke:</label>
 
       <ul class="w3-ul">
-        <li class="w3-padding-small">
-          {% for poruka in poruke%}
-            <span class="w3-small w3-text-silver">{{ poruka[0] }}</span>
+        {% for poruka in poruke%}
+          <li class="w3-padding-small"></li>
+            <span class="w3-small w3-text-lime">{{ poruka[0] }}</span>
             <span class="w3-small w3-text-green"> ({{ poruka[1] }})</span>
             <span>{{ poruka[2] }}</span>
-          {% endfor %}
-        </li>
+          </li>
+        {% endfor %}
       </ul>
 
     </div>
